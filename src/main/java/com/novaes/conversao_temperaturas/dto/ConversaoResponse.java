@@ -1,11 +1,11 @@
 package com.novaes.conversao_temperaturas.dto;
 
-public class ConversãoResponse {
+public class ConversaoResponse {
 
     private double temperatura;
     private String unidade;
 
-    public ConversãoResponse(double temperatura, String unidade) {
+    public ConversaoResponse(double temperatura, String unidade) {
         this.temperatura = temperatura;
         this.unidade = unidade;
     }

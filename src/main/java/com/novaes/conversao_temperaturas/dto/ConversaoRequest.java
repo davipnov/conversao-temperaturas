@@ -2,7 +2,7 @@ package com.novaes.conversao_temperaturas.dto;
 
 import com.novaes.conversao_temperaturas.enums.UnidadeTemperatura;
 
-public class ConversãoRequest {
+public class ConversaoRequest {
 
     private double temperatura;
     private UnidadeTemperatura unidadeOrigem;

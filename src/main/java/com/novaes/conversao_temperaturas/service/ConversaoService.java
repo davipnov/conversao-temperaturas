@@ -1,8 +1,8 @@
 package com.novaes.conversao_temperaturas.service;
 
-public class ConversãoService {
+public class ConversaoService {
 
-    public double converterTemperatura(double valor, String unidadeOrigem, String unidadeDestino) {
+    public static double converterTemperatura(double valor, String unidadeOrigem, String unidadeDestino) {
         double valorConvertido = 0.0;
 
         if (unidadeOrigem.equalsIgnoreCase("Celsius")) {
