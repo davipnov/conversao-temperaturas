@@ -1,31 +1,53 @@
 package com.novaes.conversao_temperaturas.service;
 
+import com.novaes.conversao_temperaturas.enums.UnidadeTemperatura;
+import org.springframework.stereotype.Service;
+
+@Service
 public class ConversaoService {
 
-    public static double converterTemperatura(double valor, String unidadeOrigem, String unidadeDestino) {
-        double valorConvertido = 0.0;
+    public double converterTemperatura(
+            double valor,
+            UnidadeTemperatura unidadeOrigem,
+            UnidadeTemperatura unidadeDestino) {
 
-        if (unidadeOrigem.equalsIgnoreCase("Celsius")) {
-            if (unidadeDestino.equalsIgnoreCase("Fahrenheit")) {
-                valorConvertido = (valor * 9 / 5) + 32;
-            } else if (unidadeDestino.equalsIgnoreCase("Kelvin")) {
-                valorConvertido = valor + 273.15;
+        if (unidadeOrigem == unidadeDestino) {
+            return valor;
+        }
+
+        if (unidadeOrigem == UnidadeTemperatura.CELSIUS) {
+
+            if (unidadeDestino == UnidadeTemperatura.FAHRENHEIT) {
+                return (valor * 9 / 5) + 32;
             }
-        } else if (unidadeOrigem.equalsIgnoreCase("Fahrenheit")) {
-            if (unidadeDestino.equalsIgnoreCase("Celsius")) {
-                valorConvertido = (valor - 32) * 5 / 9;
-            } else if (unidadeDestino.equalsIgnoreCase("Kelvin")) {
-                valorConvertido = (valor - 32) * 5 / 9 + 273.15;
-            }
-        } else if (unidadeOrigem.equalsIgnoreCase("Kelvin")) {
-            if (unidadeDestino.equalsIgnoreCase("Celsius")) {
-                valorConvertido = valor - 273.15;
-            } else if (unidadeDestino.equalsIgnoreCase("Fahrenheit")) {
-                valorConvertido = (valor - 273.15) * 9 / 5 + 32;
+
+            if (unidadeDestino == UnidadeTemperatura.KELVIN) {
+                return valor + 273.15;
             }
         }
 
-        return valorConvertido;
+        if (unidadeOrigem == UnidadeTemperatura.FAHRENHEIT) {
+
+            if (unidadeDestino == UnidadeTemperatura.CELSIUS) {
+                return (valor - 32) * 5 / 9;
+            }
+
+            if (unidadeDestino == UnidadeTemperatura.KELVIN) {
+                return (valor - 32) * 5 / 9 + 273.15;
+            }
+        }
+
+        if (unidadeOrigem == UnidadeTemperatura.KELVIN) {
+
+            if (unidadeDestino == UnidadeTemperatura.CELSIUS) {
+                return valor - 273.15;
+            }
+
+            if (unidadeDestino == UnidadeTemperatura.FAHRENHEIT) {
+                return (valor - 273.15) * 9 / 5 + 32;
+            }
+        }
+
+        return valor;
     }
-    
 }
